@@ -34,7 +34,7 @@ export default function RootLayout({
       lang="en"
       className={`${fraunces.variable} ${manrope.variable} h-full antialiased`}
     >
-      <body className="flex flex-col min-h-screen antialiased font-sans bg-espresso text-cream overflow-x-hidden selection:bg-terracotta selection:text-cream" suppressHydrationWarning>
+      <body className="flex flex-col min-h-screen antialiased font-sans bg-white text-node-dark overflow-x-hidden selection:bg-node-purple selection:text-white" suppressHydrationWarning>
         <SmoothScroll>
           <Navbar />
           <div className="flex-1 flex flex-col w-full">

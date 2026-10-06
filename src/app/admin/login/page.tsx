@@ -22,40 +22,40 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-espresso flex items-center justify-center p-6">
-      <div className="w-full max-w-md bg-cream/5 backdrop-blur-md p-10 border border-cream/10 rounded-2xl shadow-2xl flex flex-col items-center">
-        <h1 className="font-serif text-5xl text-latte tracking-tighter mb-2">Node.</h1>
-        <p className="font-sans text-sm text-cream/50 tracking-widest uppercase mb-10">Admin Dashboard</p>
+    <div className="min-h-screen bg-node-light flex items-center justify-center p-6">
+      <div className="w-full max-w-md bg-white p-10 border border-node-gray/20 rounded-2xl shadow-xl flex flex-col items-center">
+        <h1 className="font-serif text-5xl text-node-purple tracking-tighter mb-2">Node.</h1>
+        <p className="font-sans text-sm text-node-gray tracking-widest uppercase mb-10">Admin Dashboard</p>
 
         <form onSubmit={handleSubmit} className="w-full flex flex-col gap-6">
           <div className="flex flex-col gap-2">
-            <label className="text-xs font-sans text-cream/70 uppercase tracking-widest font-bold">Email</label>
+            <label className="text-xs font-sans text-node-gray uppercase tracking-widest font-bold">Email</label>
             <input 
               name="email"
               type="email" 
               required
               defaultValue="admin@thenodecafe.com"
-              className="w-full p-4 bg-transparent border border-cream/20 rounded-lg text-cream focus:outline-none focus:border-terracotta transition-colors"
+              className="w-full p-4 bg-node-light border border-node-gray/20 rounded-lg text-node-dark focus:outline-none focus:border-node-purple transition-colors"
             />
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-xs font-sans text-cream/70 uppercase tracking-widest font-bold">Password</label>
+            <label className="text-xs font-sans text-node-gray uppercase tracking-widest font-bold">Password</label>
             <input 
               name="password"
               type="password" 
               required
               defaultValue="admin123"
-              className="w-full p-4 bg-transparent border border-cream/20 rounded-lg text-cream focus:outline-none focus:border-terracotta transition-colors"
+              className="w-full p-4 bg-node-light border border-node-gray/20 rounded-lg text-node-dark focus:outline-none focus:border-node-purple transition-colors"
             />
           </div>
 
-          {error && <p className="text-terracotta text-sm text-center font-bold">{error}</p>}
+          {error && <p className="text-node-purple text-sm text-center font-bold">{error}</p>}
 
           <button 
             type="submit"
             disabled={isLoading}
-            className="w-full mt-4 py-4 bg-terracotta text-cream font-sans uppercase tracking-[0.2em] text-xs font-bold hover:bg-cream hover:text-espresso transition-all duration-300 rounded-sm shadow-[0_0_15px_rgba(181,83,47,0.2)] disabled:opacity-50"
+            className="w-full mt-4 py-4 bg-node-purple text-white font-sans uppercase tracking-[0.2em] text-xs font-bold hover:bg-node-dark transition-all duration-300 rounded-lg shadow-[0_0_15px_rgba(134,94,156,0.3)] disabled:opacity-50"
           >
             {isLoading ? "Authenticating..." : "Login to Dashboard"}
           </button>

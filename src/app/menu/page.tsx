@@ -18,13 +18,13 @@ export default async function MenuPage() {
   })) || [];
 
   return (
-    <main className="min-h-screen bg-espresso text-cream pt-32 pb-24 px-6 md:px-12 w-full max-w-5xl mx-auto">
+    <main className="min-h-screen bg-white text-node-dark pt-32 pb-24 px-6 md:px-12 w-full max-w-5xl mx-auto">
       <div className="flex flex-col gap-16">
         <div className="text-center">
-          <h1 className="font-serif text-5xl md:text-7xl mb-4 text-latte tracking-tight drop-shadow-md">
+          <h1 className="font-serif text-5xl md:text-7xl mb-4 text-node-purple tracking-tight drop-shadow-sm">
             Our Menu
           </h1>
-          <p className="font-sans text-latte/70 max-w-lg mx-auto">
+          <p className="font-sans text-node-gray max-w-lg mx-auto">
             Carefully curated beans, precision brewing, and signature creations.
           </p>
         </div>
@@ -32,8 +32,8 @@ export default async function MenuPage() {
         <div className="flex flex-col gap-16">
           {activeCategories.length > 0 ? (
             activeCategories.map((category) => (
-              <RevealWrapper key={category.id} className="flex flex-col gap-8 bg-cream/5 p-8 rounded-2xl border border-cream/10 shadow-xl">
-                <h2 className="font-serif text-3xl text-latte border-b border-latte/20 pb-4">
+              <RevealWrapper key={category.id} className="flex flex-col gap-8 bg-white p-8 rounded-2xl border border-node-gray/10 shadow-md">
+                <h2 className="font-serif text-3xl text-node-purple border-b border-node-purple/20 pb-4">
                   {category.name}
                 </h2>
                 
@@ -43,13 +43,13 @@ export default async function MenuPage() {
                       <ProductCard key={product.id} product={product} />
                     ))
                   ) : (
-                    <p className="text-cream/50 text-sm">No items available currently.</p>
+                    <p className="text-node-gray text-sm">No items available currently.</p>
                   )}
                 </div>
               </RevealWrapper>
             ))
           ) : (
-            <p className="text-cream/50 text-center py-12">Our menu is currently being updated. Please check back later!</p>
+            <p className="text-node-gray text-center py-12">Our menu is currently being updated. Please check back later!</p>
           )}
         </div>
       </div>
