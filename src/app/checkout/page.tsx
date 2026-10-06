@@ -26,10 +26,10 @@ function CheckoutContent() {
   if (!orderType || !branch || items.length === 0) {
     if (!isSuccess) {
       return (
-        <div className="min-h-screen bg-white text-node-dark flex items-center justify-center p-6">
+        <div className="min-h-screen text-text-main flex items-center justify-center p-6">
           <div className="text-center">
             <h1 className="font-serif text-3xl mb-4">Your cart is empty.</h1>
-            <button onClick={() => router.push("/menu")} className="text-node-purple underline hover:text-node-dark">Return to Menu</button>
+            <button onClick={() => router.push("/menu")} className="text-node-purple underline hover:text-text-main">Return to Menu</button>
           </div>
         </div>
       );
@@ -53,9 +53,11 @@ function CheckoutContent() {
       const orderItemsData = items.map(item => ({
         product_id: item.product.id,
         product_name: item.product.name,
+        variant_id: item.variant?.id,
+        variant_name: item.variant?.name,
         quantity: item.quantity,
-        unit_price: item.product.base_price,
-        line_total: item.quantity * item.product.base_price
+        unit_price: item.product.base_price + (item.variant?.price_delta || 0),
+        line_total: item.quantity * (item.product.base_price + (item.variant?.price_delta || 0))
       }));
       
       // Update the server action to accept customerName, phone, address, and paymentMethod
@@ -73,8 +75,8 @@ function CheckoutContent() {
 
   if (isSuccess) {
     return (
-      <main className="min-h-screen bg-white text-node-dark flex items-center justify-center p-6">
-        <div className="max-w-md w-full bg-node-light border border-node-gray/10 rounded-2xl p-12 text-center flex flex-col items-center gap-6 shadow-xl">
+      <main className="min-h-screen text-text-main flex items-center justify-center p-6">
+        <div className="max-w-md w-full bg-page-bg border border-node-gray/10 rounded-2xl p-12 text-center flex flex-col items-center gap-6 shadow-xl">
           <CheckCircle className="w-16 h-16 text-green-500" />
           <h1 className="font-serif text-4xl text-node-purple">Order Confirmed</h1>
           <p className="text-node-gray font-sans">
@@ -92,7 +94,7 @@ function CheckoutContent() {
   }
 
   return (
-    <main className="min-h-screen bg-white text-node-dark pt-32 pb-24 px-6 md:px-12 w-full max-w-5xl mx-auto flex flex-col md:flex-row gap-16">
+    <main className="min-h-screen text-text-main pt-32 pb-24 px-6 md:px-12 w-full max-w-5xl mx-auto flex flex-col md:flex-row gap-16">
       
       {/* Checkout Form */}
       <div className="flex-1 flex flex-col gap-8">
@@ -105,22 +107,22 @@ function CheckoutContent() {
           <p className="text-node-gray">Complete your {orderType} order for {branch}.</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6 bg-white border border-node-gray/10 p-8 rounded-3xl shadow-xl">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6 bg-card border border-node-gray/10 p-8 rounded-3xl shadow-xl">
           <div className="flex flex-col gap-2">
             <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-node-gray ml-1">Full Name</label>
-            <input required name="customer_name" className="p-4 bg-node-light border border-node-gray/20 rounded-xl focus:outline-none focus:border-node-purple focus:ring-1 focus:ring-node-purple transition-all text-node-dark placeholder-node-gray/50" placeholder="John Doe" />
+            <input required name="customer_name" className="p-4 bg-page-bg border border-node-gray/20 rounded-xl focus:outline-none focus:border-node-purple focus:ring-1 focus:ring-node-purple transition-all text-text-main placeholder-node-gray/50" placeholder="John Doe" />
           </div>
           
           <div className="flex flex-col gap-2">
             <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-node-gray ml-1">Phone Number</label>
-            <input required type="tel" name="phone" className="p-4 bg-node-light border border-node-gray/20 rounded-xl focus:outline-none focus:border-node-purple focus:ring-1 focus:ring-node-purple transition-all text-node-dark placeholder-node-gray/50" placeholder="0300 1234567" />
+            <input required type="tel" name="phone" className="p-4 bg-page-bg border border-node-gray/20 rounded-xl focus:outline-none focus:border-node-purple focus:ring-1 focus:ring-node-purple transition-all text-text-main placeholder-node-gray/50" placeholder="0300 1234567" />
           </div>
 
           <div className="flex flex-col gap-2">
             <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-node-gray ml-1">
               {orderType === "Delivery" ? `Delivery Address (${area})` : orderType === "Car hop" ? "Car Details (Color/Make/Plate)" : "Pickup Note (Optional)"}
             </label>
-            <textarea required={orderType !== "Pick-Up"} name="address" className="p-4 bg-node-light border border-node-gray/20 rounded-xl focus:outline-none focus:border-node-purple focus:ring-1 focus:ring-node-purple transition-all text-node-dark placeholder-node-gray/50 h-24 resize-none" placeholder={orderType === "Delivery" ? "Street address, Apartment, exact building..." : ""} />
+            <textarea required={orderType !== "Pick-Up"} name="address" className="p-4 bg-page-bg border border-node-gray/20 rounded-xl focus:outline-none focus:border-node-purple focus:ring-1 focus:ring-node-purple transition-all text-text-main placeholder-node-gray/50 h-24 resize-none" placeholder={orderType === "Delivery" ? "Street address, Apartment, exact building..." : ""} />
           </div>
 
           <div className="flex flex-col gap-3 mt-4">
@@ -129,7 +131,7 @@ function CheckoutContent() {
               <button
                 type="button"
                 onClick={() => setPaymentMethod("cod")}
-                className={`p-4 rounded-xl border flex flex-col items-start gap-1 transition-all ${paymentMethod === "cod" ? "bg-node-purple/10 border-node-purple text-node-purple" : "bg-node-light border-node-gray/20 text-node-gray hover:border-node-gray/40"}`}
+                className={`p-4 rounded-xl border flex flex-col items-start gap-1 transition-all ${paymentMethod === "cod" ? "bg-node-purple/10 border-node-purple text-node-purple" : "bg-page-bg border-node-gray/20 text-node-gray hover:border-node-gray/40"}`}
               >
                 <span className="font-bold text-sm">Cash on Delivery</span>
                 <span className="text-xs opacity-70">Pay when you receive it</span>
@@ -138,7 +140,7 @@ function CheckoutContent() {
               <button
                 type="button"
                 onClick={() => setPaymentMethod("card")}
-                className={`p-4 rounded-xl border flex flex-col items-start gap-1 transition-all ${paymentMethod === "card" ? "bg-node-purple/10 border-node-purple text-node-purple" : "bg-node-light border-node-gray/20 text-node-gray hover:border-node-gray/40"}`}
+                className={`p-4 rounded-xl border flex flex-col items-start gap-1 transition-all ${paymentMethod === "card" ? "bg-node-purple/10 border-node-purple text-node-purple" : "bg-page-bg border-node-gray/20 text-node-gray hover:border-node-gray/40"}`}
               >
                 <div className="flex justify-between w-full">
                   <span className="font-bold text-sm">Credit / Debit Card</span>
@@ -168,13 +170,16 @@ function CheckoutContent() {
         <h2 className="font-serif text-2xl text-node-purple border-b border-node-gray/10 pb-4">Order Summary</h2>
         <div className="flex flex-col gap-4">
           {items.map((item) => (
-            <div key={item.product.id} className="flex justify-between items-center text-sm font-sans">
-              <span className="text-node-gray"><span className="text-node-purple font-bold">{item.quantity}x</span> {item.product.name}</span>
-              <span className="font-bold text-node-dark">Rs. {item.quantity * item.product.base_price}</span>
+            <div key={item.cartItemId} className="flex justify-between items-center text-sm font-sans">
+              <span className="text-node-gray">
+                <span className="text-node-purple font-bold">{item.quantity}x</span> {item.product.name}
+                {item.variant && <span className="ml-1 text-[10px] uppercase text-node-purple opacity-80">({item.variant.name})</span>}
+              </span>
+              <span className="font-bold text-text-main">Rs. {item.quantity * (item.product.base_price + (item.variant?.price_delta || 0))}</span>
             </div>
           ))}
         </div>
-        <div className="pt-4 border-t border-node-gray/10 flex justify-between items-center font-bold text-lg text-node-dark">
+        <div className="pt-4 border-t border-node-gray/10 flex justify-between items-center font-bold text-lg text-text-main">
           <span>Total</span>
           <span className="text-node-purple">Rs. {total}</span>
         </div>
@@ -186,7 +191,7 @@ function CheckoutContent() {
 
 export default function CheckoutPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-white flex items-center justify-center text-node-dark">Loading checkout...</div>}>
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-text-main">Loading checkout...</div>}>
       <CheckoutContent />
     </Suspense>
   );

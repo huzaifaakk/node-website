@@ -3,7 +3,7 @@ import RevealWrapper from "./RevealWrapper";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-white border-t border-node-gray/20 text-node-dark pt-20 pb-10 px-8 md:px-24">
+    <footer className="w-full bg-card border-t border-node-gray/20 text-text-main pt-20 pb-10 px-8 md:px-24">
       <RevealWrapper className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-16">
         
         {/* Brand / Left */}

@@ -38,7 +38,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={heroRef} className="relative z-10 flex min-h-screen flex-col items-start justify-center px-8 md:px-24 pt-20 pointer-events-none text-node-dark">
+    <section ref={heroRef} className="relative z-10 flex min-h-screen flex-col items-start justify-center px-8 md:px-24 pt-20 pointer-events-none text-text-main">
       <div className="flex flex-col items-start text-left max-w-2xl w-full">
         <h1 ref={titleRef} className="font-serif text-7xl md:text-9xl tracking-tighter leading-[0.85] text-node-purple drop-shadow-sm">
           Coffee.<br />

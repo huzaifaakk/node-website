@@ -5,6 +5,8 @@ import { createClient } from "@/utils/supabase/server";
 interface OrderItemInput {
   product_id: string;
   product_name: string;
+  variant_id?: string;
+  variant_name?: string;
   quantity: number;
   unit_price: number;
   line_total: number;
@@ -48,6 +50,8 @@ export async function createOrder(
     order_id: order.id,
     product_id: item.product_id,
     product_name: item.product_name,
+    variant_id: item.variant_id,
+    variant_name: item.variant_name,
     quantity: item.quantity,
     unit_price: item.unit_price,
     line_total: item.line_total

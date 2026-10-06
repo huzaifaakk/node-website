@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import CartSidebar from "@/components/CartSidebar";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -33,16 +34,19 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${fraunces.variable} ${manrope.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="flex flex-col min-h-screen antialiased font-sans bg-white text-node-dark overflow-x-hidden selection:bg-node-purple selection:text-white" suppressHydrationWarning>
-        <SmoothScroll>
-          <Navbar />
-          <div className="flex-1 flex flex-col w-full">
-            {children}
-          </div>
-          <Footer />
-        </SmoothScroll>
-        <CartSidebar />
+      <body style={{ backgroundColor: "var(--background)" }} className="flex flex-col min-h-screen antialiased font-sans transition-colors duration-300 overflow-x-hidden selection:bg-node-purple selection:text-white" suppressHydrationWarning>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <SmoothScroll>
+            <Navbar />
+            <div className="flex-1 flex flex-col w-full">
+              {children}
+            </div>
+            <Footer />
+          </SmoothScroll>
+          <CartSidebar />
+        </ThemeProvider>
       </body>
     </html>
   );

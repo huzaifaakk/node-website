@@ -29,12 +29,12 @@ export default async function AdminDashboard() {
       <section>
         <h2 className="font-sans text-xl font-bold uppercase tracking-widest text-node-purple mb-6">Recent Orders</h2>
         
-        <div className="bg-white border border-node-gray/20 rounded-xl overflow-hidden shadow-sm">
+        <div className="bg-card border border-node-gray/20 rounded-xl overflow-hidden shadow-sm">
           {(!orders || orders.length === 0) ? (
             <div className="p-8 text-center text-node-gray/60 font-sans italic">No orders yet.</div>
           ) : (
             <table className="w-full text-left font-sans text-sm">
-              <thead className="bg-node-light text-node-gray uppercase tracking-wider text-xs border-b border-node-gray/10">
+              <thead className="bg-page-bg text-node-gray uppercase tracking-wider text-xs border-b border-node-gray/10">
                 <tr>
                   <th className="p-4">Order ID</th>
                   <th className="p-4">Type</th>
@@ -46,10 +46,10 @@ export default async function AdminDashboard() {
               </thead>
               <tbody className="divide-y divide-node-gray/10">
                 {orders.map((order: any) => (
-                  <tr key={order.id} className="hover:bg-node-light transition-colors">
+                  <tr key={order.id} className="hover:bg-page-bg transition-colors">
                     <td className="p-4 font-mono text-xs text-node-gray/60">{order.id.split('-')[0]}...</td>
-                    <td className="p-4 font-bold text-node-dark">{order.order_type || 'N/A'}</td>
-                    <td className="p-4 text-node-dark">{order.branch || 'N/A'}</td>
+                    <td className="p-4 font-bold text-text-main">{order.order_type || 'N/A'}</td>
+                    <td className="p-4 text-text-main">{order.branch || 'N/A'}</td>
                     <td className="p-4 text-node-purple font-bold">Rs. {order.total_amount || order.total}</td>
                     <td className="p-4">
                       <span className="px-2 py-1 bg-node-purple/10 text-node-purple rounded text-xs uppercase tracking-widest font-bold">

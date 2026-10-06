@@ -7,15 +7,27 @@
   --color-node-light: #f8f9fa;
   --color-node-offwhite: #fdfbf7;
   
+  --color-card: var(--bg-card);
+  --color-text-main: var(--foreground);
+  --color-page-bg: var(--background);
+  
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: var(--color-node-dark);
+  --background: #e5e7eb; /* Distinct cool gray background */
+  --foreground: #1c1917; /* Darker text for contrast */
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --border-color: rgba(119, 124, 130, 0.1);
 }
 
+.dark {
+  --background: #18181b; /* Deep dark gray/black */
+  --foreground: #ededed; /* Soft white text */
+  --bg-card: rgba(39, 39, 42, 0.9); /* Dark zinc card */
+  --border-color: rgba(255, 255, 255, 0.1);
+}
 
 body {
   background: var(--background);

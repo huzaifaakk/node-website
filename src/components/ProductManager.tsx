@@ -86,9 +86,9 @@ export default function ProductManager({ initialProducts }: { initialProducts: P
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {initialProducts?.map((product) => (
-          <div key={product.id} className="bg-white border border-node-gray/20 rounded-xl p-6 flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow">
+          <div key={product.id} className="bg-card border border-node-gray/20 rounded-xl p-6 flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex justify-between items-start">
-              <h3 className="font-sans font-bold text-lg text-node-dark">{product.name}</h3>
+              <h3 className="font-sans font-bold text-lg text-text-main">{product.name}</h3>
               <span className="font-sans text-node-purple font-bold">Rs. {product.base_price}</span>
             </div>
             <p className="text-sm text-node-gray line-clamp-2">{product.description}</p>
@@ -120,8 +120,8 @@ export default function ProductManager({ initialProducts }: { initialProducts: P
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-node-dark/40 backdrop-blur-sm" onClick={() => setIsModalOpen(false)} />
-          <div className="relative w-full max-w-md bg-white border border-node-gray/10 rounded-2xl p-8 shadow-2xl animate-in fade-in zoom-in duration-200">
-            <button onClick={() => setIsModalOpen(false)} className="absolute top-4 right-4 text-node-gray hover:text-node-dark">
+          <div className="relative w-full max-w-md bg-card border border-node-gray/10 rounded-2xl p-8 shadow-2xl animate-in fade-in zoom-in duration-200">
+            <button onClick={() => setIsModalOpen(false)} className="absolute top-4 right-4 text-node-gray hover:text-text-main">
               <X className="w-5 h-5" />
             </button>
             <h3 className="font-serif text-3xl text-node-purple mb-6">
@@ -131,27 +131,27 @@ export default function ProductManager({ initialProducts }: { initialProducts: P
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div className="flex flex-col gap-2">
                 <label className="text-xs uppercase tracking-widest text-node-gray">Name</label>
-                <input required name="name" defaultValue={editingProduct?.name || ""} className="p-3 bg-node-light border border-node-gray/10 rounded-lg text-node-dark focus:outline-none focus:border-node-purple" />
+                <input required name="name" defaultValue={editingProduct?.name || ""} className="p-3 bg-page-bg border border-node-gray/10 rounded-lg text-text-main focus:outline-none focus:border-node-purple" />
               </div>
               <div className="flex flex-col gap-2">
                 <label className="text-xs uppercase tracking-widest text-node-gray">Description</label>
-                <textarea required name="description" defaultValue={editingProduct?.description || ""} className="p-3 bg-node-light border border-node-gray/10 rounded-lg text-node-dark h-24 focus:outline-none focus:border-node-purple" />
+                <textarea required name="description" defaultValue={editingProduct?.description || ""} className="p-3 bg-page-bg border border-node-gray/10 rounded-lg text-text-main h-24 focus:outline-none focus:border-node-purple" />
               </div>
               <div className="flex flex-col gap-2">
                 <label className="text-xs uppercase tracking-widest text-node-gray">Image (Upload or URL)</label>
                 <div className="flex flex-col gap-2">
                   <input type="file" name="image_file" accept="image/*" className="text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-node-purple file:text-white hover:file:bg-node-dark cursor-pointer text-node-gray" />
                   <span className="text-xs text-node-gray/80 italic">Or paste a URL:</span>
-                  <input name="image_path" defaultValue={editingProduct?.image_path || ""} placeholder="https://..." className="p-3 bg-node-light border border-node-gray/10 rounded-lg text-node-dark focus:outline-none focus:border-node-purple" />
+                  <input name="image_path" defaultValue={editingProduct?.image_path || ""} placeholder="https://..." className="p-3 bg-page-bg border border-node-gray/10 rounded-lg text-text-main focus:outline-none focus:border-node-purple" />
                 </div>
               </div>
               <div className="flex flex-col gap-2">
                 <label className="text-xs uppercase tracking-widest text-node-gray">Base Price (Rs.)</label>
-                <input required type="number" name="base_price" defaultValue={editingProduct?.base_price || ""} className="p-3 bg-node-light border border-node-gray/10 rounded-lg text-node-dark focus:outline-none focus:border-node-purple" />
+                <input required type="number" name="base_price" defaultValue={editingProduct?.base_price || ""} className="p-3 bg-page-bg border border-node-gray/10 rounded-lg text-text-main focus:outline-none focus:border-node-purple" />
               </div>
               <div className="flex items-center gap-3 mt-2">
                 <input type="checkbox" name="is_available" defaultChecked={editingProduct ? editingProduct.is_available : true} className="w-4 h-4 accent-node-purple" />
-                <label className="text-sm text-node-dark font-bold">Available for Order</label>
+                <label className="text-sm text-text-main font-bold">Available for Order</label>
               </div>
 
               <button disabled={isSubmitting} className="mt-6 w-full py-4 bg-node-purple text-white uppercase tracking-widest text-xs font-bold rounded-lg hover:bg-node-dark transition-colors disabled:opacity-50">

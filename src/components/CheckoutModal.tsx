@@ -38,28 +38,28 @@ export default function CheckoutModal({ onClose }: { onClose: () => void }) {
       />
 
       {/* Modal Container */}
-      <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in duration-300">
+      <div className="relative w-full max-w-md bg-card rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in duration-300">
         
         {/* Header - Navy/Espresso with Logo */}
-        <div className="bg-node-light pt-8 pb-12 flex justify-center relative rounded-b-3xl border-b border-node-gray/10">
+        <div className="bg-page-bg pt-8 pb-12 flex justify-center relative rounded-b-3xl border-b border-node-gray/10">
           <button 
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 text-node-gray hover:text-node-dark transition-colors"
+            className="absolute top-4 right-4 p-2 text-node-gray hover:text-text-main transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
           
-          <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center shadow-md transform translate-y-10 border border-node-gray/10">
+          <div className="w-20 h-20 bg-card rounded-2xl flex items-center justify-center shadow-md transform translate-y-10 border border-node-gray/10">
             <span className="font-serif text-4xl text-node-purple">N.</span>
           </div>
         </div>
 
         {/* Content */}
         <div className="pt-16 pb-8 px-8 flex flex-col items-center">
-          <h2 className="font-sans font-bold text-lg text-node-dark mb-6">Select Your Order Type</h2>
+          <h2 className="font-sans font-bold text-lg text-text-main mb-6">Select Your Order Type</h2>
           
           {/* Order Type Tabs */}
-          <div className="flex bg-node-light rounded-full p-1 w-full mb-8 border border-node-gray/10">
+          <div className="flex bg-page-bg rounded-full p-1 w-full mb-8 border border-node-gray/10">
             {(["Delivery", "Pick-Up", "Car hop"] as OrderType[]).map((type) => (
               <button
                 key={type}
@@ -67,7 +67,7 @@ export default function CheckoutModal({ onClose }: { onClose: () => void }) {
                 className={`flex-1 py-2 px-4 rounded-full text-sm font-bold transition-all ${
                   orderType === type 
                     ? "bg-node-purple text-white shadow-md" 
-                    : "text-node-gray hover:text-node-dark"
+                    : "text-node-gray hover:text-text-main"
                 }`}
               >
                 {type}
@@ -91,7 +91,7 @@ export default function CheckoutModal({ onClose }: { onClose: () => void }) {
               <select 
                 value={deliveryArea}
                 onChange={(e) => setDeliveryArea(e.target.value)}
-                className="w-full p-3 border border-node-gray/20 rounded-lg bg-white text-node-dark text-sm focus:outline-none focus:border-node-purple cursor-pointer"
+                className="w-full p-3 border border-node-gray/20 rounded-lg bg-card text-text-main text-sm focus:outline-none focus:border-node-purple cursor-pointer"
               >
                 <option value="" disabled>Choose an area in Karachi</option>
                 {KARACHI_AREAS.map(area => (
@@ -102,12 +102,12 @@ export default function CheckoutModal({ onClose }: { onClose: () => void }) {
           )}
 
           {/* Location Info Box */}
-          <div className="w-full bg-node-light border border-node-gray/10 rounded-lg p-4 flex gap-4 mb-8">
+          <div className="w-full bg-page-bg border border-node-gray/10 rounded-lg p-4 flex gap-4 mb-8">
             <div className="mt-1">
               <MapPin className="w-5 h-5 text-node-purple" />
             </div>
             <div className="flex flex-col">
-              <span className="text-sm font-bold text-node-dark">Node Coffee</span>
+              <span className="text-sm font-bold text-text-main">Node Coffee</span>
               <span className="text-xs text-node-gray mt-1 leading-relaxed">
                 Plot D-9 first floor Block A, North Nazimabad, Inside Fitcore Gym
               </span>

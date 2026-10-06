@@ -22,8 +22,8 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-node-light flex items-center justify-center p-6">
-      <div className="w-full max-w-md bg-white p-10 border border-node-gray/20 rounded-2xl shadow-xl flex flex-col items-center">
+    <div className="min-h-screen bg-page-bg flex items-center justify-center p-6">
+      <div className="w-full max-w-md bg-card p-10 border border-node-gray/20 rounded-2xl shadow-xl flex flex-col items-center">
         <h1 className="font-serif text-5xl text-node-purple tracking-tighter mb-2">Node.</h1>
         <p className="font-sans text-sm text-node-gray tracking-widest uppercase mb-10">Admin Dashboard</p>
 
@@ -35,7 +35,7 @@ export default function AdminLoginPage() {
               type="email" 
               required
               defaultValue="admin@thenodecafe.com"
-              className="w-full p-4 bg-node-light border border-node-gray/20 rounded-lg text-node-dark focus:outline-none focus:border-node-purple transition-colors"
+              className="w-full p-4 bg-page-bg border border-node-gray/20 rounded-lg text-text-main focus:outline-none focus:border-node-purple transition-colors"
             />
           </div>
 
@@ -46,7 +46,7 @@ export default function AdminLoginPage() {
               type="password" 
               required
               defaultValue="admin123"
-              className="w-full p-4 bg-node-light border border-node-gray/20 rounded-lg text-node-dark focus:outline-none focus:border-node-purple transition-colors"
+              className="w-full p-4 bg-page-bg border border-node-gray/20 rounded-lg text-text-main focus:outline-none focus:border-node-purple transition-colors"
             />
           </div>
 

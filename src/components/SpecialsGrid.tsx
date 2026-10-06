@@ -16,7 +16,7 @@ export default function SpecialsGrid({ products }: { products: Product[] }) {
           onClick={() => addItem(product)}
           className="flex flex-col items-center text-center group cursor-pointer"
         >
-          <div className="w-full h-48 bg-white rounded-xl mb-6 border border-node-gray/10 shadow-sm group-hover:border-node-purple group-hover:shadow-md transition-all duration-300 flex items-center justify-center overflow-hidden relative">
+          <div className="w-full h-48 bg-card rounded-xl mb-6 border border-node-gray/10 shadow-sm group-hover:border-node-purple group-hover:shadow-md transition-all duration-300 flex items-center justify-center overflow-hidden relative">
             <span className="font-serif text-6xl text-node-purple/10 group-hover:text-node-purple/20 transition-colors group-hover:scale-110 duration-500">
               N.
             </span>
@@ -26,7 +26,7 @@ export default function SpecialsGrid({ products }: { products: Product[] }) {
               </span>
             </div>
           </div>
-          <h3 className="font-sans text-2xl font-medium text-node-dark group-hover:text-node-purple transition-colors mb-2">
+          <h3 className="font-sans text-2xl font-medium text-text-main group-hover:text-node-purple transition-colors mb-2">
             {product.name}
           </h3>
           <p className="text-sm text-node-gray leading-relaxed max-w-xs">
